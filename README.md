@@ -1,88 +1,88 @@
-# MaskRCNN_Video
+#MaskerRCNN_Video
 
-En este proyecto abordaremos la segmentación semantica usando MaskRCNN en imagenes y video. Los repositorios base de este proyecto son los siguiente. El primero de ellos es la implementación para Tensorflow 1, y el segundo repositorio tiene la actualización para Tensorflow 2.
-Se realizaron modificaciones para correr la detección usando la cámara web.
+Dalam proyek ini kita akan membahas segmentasi semantik menggunakan MaskRCNN dalam gambar dan video. Repositori dasar untuk proyek ini adalah sebagai berikut. Yang pertama adalah implementasi untuk Tensorflow 1, dan repositori kedua memiliki pembaruan untuk Tensorflow 2.
+Modifikasi dilakukan untuk menjalankan deteksi menggunakan webcam.
 
     https://github.com/matterport/Mask_RCNN
     https://github.com/akTwelve/Mask_RCNN
 
-## Preparación del entorno
+## Persiapan lingkungan
 
-Prepararemos un entorno con python 3.7.7, Tensorflow 2.1.0 y keras 2.3.1
+Kami akan menyiapkan lingkungan dengan python 3.7.7, Tensorflow 2.1.0 dan keras 2.3.1
 
-    $ conda create -n MaskRCNN anaconda python=3.7.7
-    $ conda activate MaskRCNN
+    $ conda create -n MaskRCNN anaconda python = 3.7.7
+    $ conda aktifkan MaskRCNN
     $ conda install ipykernel
     $ python -m ipykernel install --user --name MaskRCNN --display-name "MaskRCNN"
-    $ conda install tensorflow-gpu==2.1.0 cudatoolkit=10.1
-    $ pip install tensorflow==2.1.0
-    $ pip install jupyter
-    $ pip install keras
-    $ pip install numpy scipy Pillow cython matplotlib scikit-image opencv-python h5py imgaug IPython[all]
+    $ conda install tensorflow-gpu == 2.1.0 cudatoolkit = 10.1
+    $ pip instal tensorflow == 2.1.0
+    $pip instal jupyter
+    $pip install keras
+    $ pip install numpy scipy Bantal cython matplotlib scikit-image opencv-python h5py imgaug IPython [all]
     
-## Instalar MaskRCNN
+## Instal MaskRCNN
 
     $ python setup.py install
-    $ pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
+    $ pip install git + https: //github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
     
-## Prueba en Jupyter notebook
+## Uji di notebook Jupyter
 
-    $ cd samples
-    $ jupyter notebook
+    $cd sampel
+    $buku catatan jupyter
     
-## Prueba en consola con imagenes y en video
+## Tes konsol dengan gambar dan video
 
-### Con imágenes
+### Dengan Gambar
 
-    $ cd samples
+    $cd sampel
     $ python imagemask.py
     
-### En video
+### Dalam video
 
-    $ cd samples
+    $cd sampel
     $ python videomask.py
     
-# Entrenamiento con custom-dataset
--   Etiquetar el data set con la herramienta [VIAv1.0](http://www.robots.ox.ac.uk/~vgg/software/via/via-1.0.0.html) (Hacerlo con la versión 1.0.0)
--   Guardar los datos de validación y entrenamiento en carpetas con nombre train y val
--   Guardar las anotaciones de los dos grupos de datos con el nombre: via_region_data.json
--   Ejeccutar en google colab el archivo Casco.ipynb.
+# Pelatihan dengan kumpulan data khusus
+- Beri label kumpulan data dengan alat [VIAv1.0] (http://www.robots.ox.ac.uk/~vgg/software/via/via-1.0.0.html) (Lakukan dengan versi 1.0. 0)
+- Simpan data validasi dan pelatihan di folder bernama train and val
+- Simpan anotasi dari dua grup data dengan nama: via_region_data.json
+- Jalankan di google collab file Casco.ipynb.
 
-## Prueba del modelo entrenado con custom-dataset
+## Uji model terlatih dengan kumpulan data khusus
 
--   PARA PRUEBA DEL SISTEMA CON IMÁGENES:
+- UNTUK PENGUJIAN SISTEM DENGAN GAMBAR :
     
-    Modificar los parámetros 
+    Ubah parameter
     
-    -   model_filename = "mask_rcnn_casco_0050.h5" # Aquí deben cargar el modelo entrenado con su dataset
-    -   class_names = ['BG', 'casco'] # Las clases relacionadas con su modelo BG + clases custom
-    -   min_confidence = 0.6 # Nivel mínimo de confianza para aceptar un hallazgo como positivo
+    - model_filename = "mask_rcnn_casco_0050.h5" # Di sini Anda harus memuat model terlatih dengan dataset Anda
+    - class_names = ['BG', 'casco'] # Kelas yang terkait dengan model BG Anda + kelas khusus
+    - min_confidence = 0,6 # Tingkat kepercayaan minimum untuk menerima temuan sebagai positif
     
-    $ python casco.py
+    $ python helm.py
         
--   PARA PRUEBA DEL SISTEMA EN VIDEO:
+- UNTUK PENGUJIAN SISTEM DI VIDEO:
 
-    Modificar los parámetros 
+    Ubah parameter
     
-    -   model_filename = "mask_rcnn_casco_0050.h5" # Aquí deben cargar el modelo entrenado con su dataset
-    -   class_names = ['BG', 'casco'] # Las clases relacionadas con su modelo BG + clases custom
-    -   min_confidence = 0.6 # Nivel mínimo de confianza para aceptar un hallazgo como positivo
-    -   camera = cv2.VideoCapture(0) # Si desean correr webcam
-    -   camera = cv2.VideoCapture("video.mp4") # Si desean correr un video cargandolo desde su PC
+    - model_filename = "mask_rcnn_casco_0050.h5" # Di sini Anda harus memuat model terlatih dengan dataset Anda
+    - class_names = ['BG', 'casco'] # Kelas yang terkait dengan model BG Anda + kelas khusus
+    - min_confidence = 0,6 # Tingkat kepercayaan minimum untuk menerima temuan sebagai positif
+    - kamera = cv2.VideoCapture (0) # Jika Anda ingin menjalankan webcam
+    - camera = cv2.VideoCapture ("video.mp4") # Jika Anda ingin menjalankan video yang memuatnya dari PC Anda
     
     $ python cascoVideo.py
     
 
  
-## Entrenamiento multiclases custom dataset
+## Pelatihan kumpulan data khusus multikelas
 
- -   CustomClasses.ipynb
+ - Kelas Kustom.ipynb
  
-## IoU Intersection over Union
+## Persimpangan IoU di atas Union
 
--   IoUTest.ipynb
+- IoUTest.ipynb
  
-# Agradecimientos
+# Terima kasih
 
     Matterport, Inc
     https://github.com/matterport
